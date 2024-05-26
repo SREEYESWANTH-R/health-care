@@ -28,19 +28,25 @@ app.post("/signup",(req,res)=>{
         else {
             console.log('User registered successfully');
             res.status(200).json({ message: 'User registered successfully' });
-            // db.query("INSERT INTO session (username) VALUES (?)",[Name],(sessionErr, sessionResult)=>{
-            //   if (sessionErr) {
-            //     console.error('Error occurred while inserting username into session table:', sessionErr);
-            //     res.status(500).json({ error: 'Error occurred during registration' });
-            // } else {
-            //     console.log('Username inserted into session table');
-            //     res.status(200).json({ message: 'User registered successfully' });
-            // }
-            // });
         }
     }
     )
 });
+
+app.post('/appoinment',(req,res)=>{
+  const{name,age,gender,mobile,address} = req.body;
+  const query = "INSERT INTO appointment (name,age,gender,mobNum,address) VALUES (?,?,?,?,?)";
+  db.query(query,[name,age,gender,mobile,address],(err,result)=>{
+    if(err){
+      console.error("Error fetching appoinment data",err);
+      res.status(500).json({error:"Error inserting data"});
+    }else{
+      console.log("Appoinment made successfully");
+      res.status(200).json({ message: 'Appoinment made  successfully'})
+    }
+  });
+})
+
 
 app.post("/login", (req, res) => {
   const { Email, password } = req.body;
@@ -127,6 +133,8 @@ app.post('/adminlogin',(req,res)=>{
     }
   );
 });
+
+
 
 
 

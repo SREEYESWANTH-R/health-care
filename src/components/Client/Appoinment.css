@@ -1,0 +1,17 @@
+
+.Apoint-form{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 1em;
+}
+
+
+
+.appForm{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap:1em;
+   width:50%;
+}

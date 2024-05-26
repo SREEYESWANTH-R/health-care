@@ -132,6 +132,7 @@
     background-color: rgb(255, 221, 26);
     font-weight: bold;
     transition: all 0.3;
+    text-decoration: none;
 }
 
 .if1>button:hover{
@@ -161,4 +162,44 @@
     top:55%;
     border-radius: 0 0 20px 20px;
     color: #ffffff;
+}
+
+.inst-appoint{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(254, 225, 162);
+    border-radius: 15px;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 2px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.inst-col-1{
+    display: flex;
+    align-items: center;
+    gap:2em;
+    background-color: white;
+    padding:1em 2em;
+    border-radius: 15px 25px 25px 15px;
+}
+
+.inst-det>button{
+    padding: 0.5em 1em;
+    font-weight: 600;
+    border: 1px solid black;
+    border-radius: 5px;;
+    background-color: white;
+}
+
+.inst-det>button:hover{
+    color:#1131ff;
+    background-color: #ffffff;
+    border: 1px solid #1131ff ;
+}
+
+.inst-col-2{
+    padding: 1.5em 2em 0 2em;
+}
+
+.inst-det-lst{
+    padding-left: 1.5em;
 }

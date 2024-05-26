@@ -6,6 +6,8 @@ import Login from './components/Client/Login';
 import Dashboard from './components/Client/Dashboard';
 import AdminLogin from './components/Admin/AdminLogin';
 import AdminDash from './components/Admin/AdminDash';
+import Appoinment from './components/Client/Appoinment'
+import Doctor from './components/Client/Doctor'
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/adminlogin" element={<AdminLogin/>}/>
         <Route path="/adminDash" element={<AdminDash/>}/>
-       
+        <Route path="/dashboard/appoinment" element={<Appoinment/>}/>
+        <Route path="/dashboard/doctors" element={<Doctor/>}/>
       </Routes>
     </div>
   </Router></>
