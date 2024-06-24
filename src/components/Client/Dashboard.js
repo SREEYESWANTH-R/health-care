@@ -1,6 +1,6 @@
 import React ,{useState,useEffect} from 'react'
 import './Dashboard.css'
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import {LocalHospital,AccountCircle,SearchRounded} from '@mui/icons-material'
 import {Button} from '@mui/material';
 import axios from "axios";
@@ -9,8 +9,10 @@ import labIcon from '../../assests/lab-equipment_7918229.png'
 import docVideo from '../../assests/doc.mp4'
 import ApointIcon from '../../assests/appoinmentIcon.png'
 
+
 function Dashboard(){
   const [username, setUsername] = useState('');
+ 
 
   useEffect(() => {
       dash();
@@ -30,12 +32,13 @@ function Dashboard(){
     axios.post('http://localhost:3000/logout')
         .then(response => {
             console.log(response.data.message);
-            // Perform any additional logout logic (e.g., clearing local storage, redirecting)
+            
         })
         .catch(error => {
             console.error('Error logging out:', error);
         });
 }
+
 
 
   return (
@@ -54,9 +57,9 @@ function Dashboard(){
         <button className='dash-btn'>Medic</button>
         <div className='dash-nav-1'>
            <ul className='dash-item-list'>
-             <li className='dash-items'><a href="#">Physcology</a></li>
-             <li className='dash-items'><a href="#">Cardiology</a></li>
-             <li className='dash-items'><a href="#">Gastrology</a></li>
+             <li className='dash-items'><Link to='/dashboard/doctors'>Physcology</Link></li>
+             <li className='dash-items'><Link to='/dashboard/doctors'>Gastrology</Link></li>
+             <li className='dash-items'><Link to='/dashboard/doctors'>Cardiology</Link></li>
            </ul>
         </div>
          

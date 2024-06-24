@@ -1,0 +1,36 @@
+.doc-search{
+    width:30%;
+    padding:1em 1em 0 1em;
+}
+
+.search-bar{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border:1px solid black;
+    padding: 0.3em;
+    border-radius: 15px;
+}
+
+.search-bar>input{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0.3em;
+}
+
+.doctors-container{
+    font-family: Poppins;
+}
+
+.doc-head{
+    padding: 0.5em 1.5em ;
+}
+
+.doc-card{
+    padding:0.3em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:0.5em;    
+}

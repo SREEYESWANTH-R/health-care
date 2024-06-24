@@ -8,6 +8,8 @@ import AdminLogin from './components/Admin/AdminLogin';
 import AdminDash from './components/Admin/AdminDash';
 import Appoinment from './components/Client/Appoinment'
 import Doctor from './components/Client/Doctor'
+import doctor from './DoctorList'
+import DocDetail from './components/Client/DocDetail';
 
 function App() {
   return (
@@ -19,9 +21,10 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/adminlogin" element={<AdminLogin/>}/>
-        <Route path="/adminDash" element={<AdminDash/>}/>
+        <Route path="/admin/dashboard" element={<AdminDash/>}/>
         <Route path="/dashboard/appoinment" element={<Appoinment/>}/>
-        <Route path="/dashboard/doctors" element={<Doctor/>}/>
+        <Route path="/dashboard/doctors" element={<Doctor doctor ={doctor} />}/>
+        <Route path="/dashboard/DocDetails/:id" element={<DocDetail doctors = {doctor}/>}/>
       </Routes>
     </div>
   </Router></>

@@ -86,6 +86,19 @@ app.post("/login", (req, res) => {
   );
 });
 
+app.get("/admin/dashboard",(req,res)=>{
+  const query = "SELECT * FROM appointment"
+  db.query(query,(error,result)=>{
+    if(error){
+      console.error("Error fetching Details of Appoinment",error);
+      res.status(500).json({error:"Error fetching appoinment details"});
+      return;
+    }
+    res.status(200).json(result);
+
+  });
+});
+
 app.get('/dashboard', (req, res) => {
   db.query('SELECT username FROM session WHERE id = 1', (error, results) => {
     if (error) {
@@ -112,6 +125,10 @@ app.post('/logout',(req,res)=>{
     }
     res.status(200).json({success:true,message:'Logout successfully.'})
   });
+})
+
+app.post("/checked",(req,res)=>{
+  db.query("")
 })
 
 app.post('/adminlogin',(req,res)=>{

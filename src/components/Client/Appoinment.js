@@ -45,7 +45,7 @@ function Appoinment(){
           <form className='appForm' onSubmit={handleAppoinment}>
             <TextField
                 required
-                fullWidth
+                fullwidth
                 helperText=""
                 id="outlined-basic"
                 label="Name"
@@ -55,7 +55,7 @@ function Appoinment(){
             />
             <TextField
                 required
-                fullWidth
+                fullwidth
                 helperText=""
                 id="outlined-basic"
                 value = {age}
@@ -65,7 +65,7 @@ function Appoinment(){
             />
             <TextField
                 required
-                fullWidth
+                fullwidth
                 helperText=""
                 id="outlined-basic"
                 value = {gender}
@@ -75,7 +75,7 @@ function Appoinment(){
             />
             <TextField
                 required
-                fullWidth
+                fullwidth
                 helperText=""
                 id="outlined-basic"
                 value = {mobile}
@@ -85,7 +85,7 @@ function Appoinment(){
             />
             <Textarea
               required
-              fullWidth
+              fullwidth
               minRows={3}
               value = {address}
               placeholder="Address"
