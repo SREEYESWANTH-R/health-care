@@ -92,6 +92,12 @@ html, body {
   margin-bottom: 0.5em;
 }
 
+.apt-status{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .app-main {
   grid-area: main;
 }

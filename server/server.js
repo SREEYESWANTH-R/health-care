@@ -47,6 +47,20 @@ app.post('/appoinment',(req,res)=>{
   });
 })
 
+app.post('/admin/appointment/delete', (req, res) => {
+  const { id } = req.body;
+  const query = "DELETE FROM appointment WHERE id = ?";
+  
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      console.error("Error deleting appointment", err);
+      res.status(500).json({ error: "Error deleting appointment" });
+      return;
+    }
+    res.status(200).json({ message: 'Appointment deleted successfully' });
+  });
+});
+
 
 app.post("/login", (req, res) => {
   const { Email, password } = req.body;
@@ -127,9 +141,6 @@ app.post('/logout',(req,res)=>{
   });
 })
 
-app.post("/checked",(req,res)=>{
-  db.query("")
-})
 
 app.post('/adminlogin',(req,res)=>{
   const {adminName,adPassword} = req.body;

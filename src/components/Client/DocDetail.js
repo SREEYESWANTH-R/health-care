@@ -31,7 +31,7 @@ function DocDetail({ doctors}) {
         </div>
         <div className='loc-frame'>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d380511.46333812294!2d-88.06229651552813!3d41.833771424506665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2c3cd0f4cbed%3A0xafe0a6ad09c0c000!2sChicago%2C%20IL%2C%20USA!5e0!3m2!1sen!2sin!4v1719227510183!5m2!1sen!2sin"
+            src= {doctor.locationLink}
             width="600"
             height="450"
             style={{ border: 0 }}
