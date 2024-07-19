@@ -29,16 +29,8 @@ function DocDetail({ doctors}) {
           </h5>
           <h5><LocationOn/>{doctor.location}</h5>
         </div>
-        <div className='loc-frame'>
-          {/* <iframe
-            src= {doctor.locationLink}
-            width="600"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe> */}
+        <div className='des-frame'>
+            {doctor.description}
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@ import DocDetail from './components/Client/DocDetail';
 import Pharmacy from './components/Client/Pharmacy';
 import AddDoc from './components/Admin/AddDoc';
 
+
 function App() {
   return (
     <><Router>

@@ -8,8 +8,9 @@ import { Link} from 'react-router-dom';
 
 function Doctor({doctor}) {
    
-  const[image, setImage] = useState([])
+  // const[image, setImage] = useState([])
   const[docInt, setDocint] = useState('')
+  const [filteredDoctors, setFilteredDoctors] = useState([]);
 
   async function unsplashAPI(){
     try {
@@ -20,7 +21,11 @@ function Doctor({doctor}) {
           per_page: doctor.length, 
         },
       });
-      setImage(response.data.results.map((result) => result.urls.small));
+      // setImage(response.data.results.map((result) => result.urls.small));
+      const image = response.data.results.map((result) => result.urls.small);
+      const doctorWithImages = doctor.map((doc,index)=> ({...doc, image:image[index]}));
+      setFilteredDoctors(doctorWithImages)
+
     } catch (error) {
       console.error('Error fetching image from Unsplash API', error);
     }
@@ -32,7 +37,12 @@ function Doctor({doctor}) {
     }
   },[doctor])
 
- 
+  useEffect(() => {
+    const filtered = doctor.filter(d =>
+      d.name.toLowerCase().includes(docInt.toLowerCase())
+    );
+    setFilteredDoctors(filtered);
+  }, [docInt, doctor]);
 
   return (
     <div>
@@ -57,32 +67,32 @@ function Doctor({doctor}) {
         </div>
         
         <div className="doc-card">
-          {doctor.map((doctor,index) => (
-            <Card key={doctor.id} sx={{ maxWidth: 345 }}>
+          {filteredDoctors.map((doc) => (
+            <Card key={doc.id} sx={{ maxWidth: 345 }}>
             <CardMedia
               sx={{ height: 140 }}
-              image={image[index] || ''}
-              title={doctor.name}
+              image={doc.image || ''}
+              title={doc.name}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                {doctor.name}
+                {doc.name}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {doctor.gender}
+                {doc.gender}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {doctor.location}
+                {doc.location}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {doctor.expertise}
+                {doc.expertise}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                {doctor.description}
+                {doc.description}
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small"><Link to ={ `/dashboard/DocDetails/${doctor.id}`}>Learn More</Link></Button>
+              <Button size="small"><Link to ={ `/dashboard/DocDetails/${doc.id}`}>Learn More</Link></Button>
             </CardActions>
           </Card>
             
