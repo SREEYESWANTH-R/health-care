@@ -30,7 +30,7 @@ function DocDetail({ doctors}) {
           <h5><LocationOn/>{doctor.location}</h5>
         </div>
         <div className='loc-frame'>
-          <iframe
+          {/* <iframe
             src= {doctor.locationLink}
             width="600"
             height="450"
@@ -38,7 +38,7 @@ function DocDetail({ doctors}) {
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
+          ></iframe> */}
         </div>
       </div>
     </div>

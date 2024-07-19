@@ -54,7 +54,7 @@ function Dashboard(){
         </div>
       </header>
       <div className='dash-nav1'>
-        <button className='dash-btn'>Medic</button>
+        <button className='dash-btn'><Link to="/dashboard/pharmacy" className='phar'>Pharmacy</Link></button>
         <div className='dash-nav-1'>
            <ul className='dash-item-list'>
              <li className='dash-items'><Link to='/dashboard/doctors'>Physcology</Link></li>

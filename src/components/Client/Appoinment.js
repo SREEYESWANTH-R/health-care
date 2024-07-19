@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Appoinment.css'
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, InputLabel,MenuItem,FormControl,Select } from '@mui/material';
 import { Textarea } from '@mui/joy';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital'; 
 import axios from "axios";
@@ -8,18 +8,19 @@ import axios from "axios";
 
 
 
-function Appoinment(){
+function Appoinment({details}){
    
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
+  const [doctor, setDoctor] = useState([]);
 
   function handleAppoinment(event){
     event.preventDefault()
     axios.post("http://localhost:3000/appoinment",{
-      name,age,gender,mobile,address
+      name,age,gender,mobile,address,doctor
     }).then((response)=>{
       console.log(response);
     }).catch((error)=>{
@@ -27,6 +28,11 @@ function Appoinment(){
     })
   }
 
+  
+
+  const handleDoctorChange = (event) => {
+    setDoctor(event.target.value);
+  };
   
   return (
     <div className='Apoint-cont'>
@@ -73,6 +79,23 @@ function Appoinment(){
                 variant="outlined"
                 onChange={ e => {setGender(e.target.value)}}
             />
+
+            <FormControl fullWidth>
+              <InputLabel id="doctor-select-label">Doctor</InputLabel>
+              <Select
+                labelId="doctor-select-label"
+                id="doctor-select"
+                value={doctor}
+                onChange={handleDoctorChange}
+                label="Doctor"
+              >
+                {details.map(doc => (
+                  <MenuItem key={doc.id} value={doc.name}>{doc.name}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+
             <TextField
                 required
                 fullwidth

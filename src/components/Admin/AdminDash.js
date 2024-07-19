@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { LocalHospital, AccountCircle, MedicationLiquid, AccountBalanceWallet, AccessibleForward, Close, Bolt } from '@mui/icons-material';
+import { LocalHospital, AccountCircle, MedicationLiquid, AccountBalanceWallet, AccessibleForward, Close } from '@mui/icons-material';
 import './AdminDash.css';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function AdminDash() {
   const [appointments, setAppointments] = useState([]);
@@ -54,7 +55,7 @@ function AdminDash() {
       <div className='appoinment-block'>
         <div className='sideBar-admin'>
           <ul>
-            <li className='side-items'><AccessibleForward style={{ color: 'blue' }} /><a href=''>Doctors</a></li>
+            <li className='side-items'><AccessibleForward style={{ color: 'blue' }} /><Link to='/admin/add-doctor' style={{textDecoration:'none'}}>Doctors</Link></li>
             <li className='side-items'><MedicationLiquid style={{ color: 'blue' }} /><a href=''>Medicine</a></li>
             <li className='side-items'><AccountBalanceWallet style={{ color: 'blue' }} /><a href=''>Billing</a></li>
           </ul>
@@ -69,9 +70,10 @@ function AdminDash() {
             <div key={index} className='appointment-card'>
               <div className='apt-status' id='apt-status'>
                 <p id='active' style={{fontWeight:'bold' ,color: appointment.status === 'Active' ? 'red' : 'green' }}>{appointment.status}</p>
-                <Close onClick={() => handleDelete(appointment.id)} />
+                <Close style={{ fontSize: 'small' }} onClick={() => handleDelete(appointment.id)} />
               </div>
               <h4>Name: {appointment.name}</h4>
+              <p>Doctor: {appointment.doctor}</p>
               <p>Age: {appointment.age}</p>
               <p>Gender: {appointment.gender}</p>
               <p>Address: {appointment.address}</p>
@@ -79,8 +81,7 @@ function AdminDash() {
               <Button variant="contained" style={{ backgroundColor: 'blue' }} 
                 type='submit'
                 id='statBtn'
-                onClick={() => handleStatus(index)}
-              >
+                onClick={() => handleStatus(index)}>
                 Checked
               </Button>
             </div>

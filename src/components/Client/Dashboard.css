@@ -45,6 +45,15 @@
     transition: all;
 }
 
+.phar{
+    text-decoration: none;
+    transition: all;
+}
+
+.phar:hover{
+    color: #1131ff;
+}
+
 .dash-btn:hover{
     color:#1131ff;
     background-color: #ffffff;

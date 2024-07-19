@@ -34,9 +34,9 @@ app.post("/signup",(req,res)=>{
 });
 
 app.post('/appoinment',(req,res)=>{
-  const{name,age,gender,mobile,address} = req.body;
-  const query = "INSERT INTO appointment (name,age,gender,mobNum,address) VALUES (?,?,?,?,?)";
-  db.query(query,[name,age,gender,mobile,address],(err,result)=>{
+  const{name,age,gender,mobile,address,doctor} = req.body;
+  const query = "INSERT INTO appointment (name,doctor,age,gender,mobNum,address) VALUES (?,?,?,?,?,?)";
+  db.query(query,[name,doctor,age,gender,mobile,address],(err,result)=>{
     if(err){
       console.error("Error fetching appoinment data",err);
       res.status(500).json({error:"Error inserting data"});
