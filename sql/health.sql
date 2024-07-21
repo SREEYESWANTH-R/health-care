@@ -34,3 +34,15 @@ CREATE TABLE appointment (
 );
 
 SELECT * FROM appointment;
+
+CREATE TABLE doctor(
+	id INT auto_increment Primary Key,
+    name VARCHAR(100) NOT NULL,
+    gender CHAR(7) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    description VARCHAR(100) NOT NULL,
+    expertise VARCHAR(100) NOT NULL,
+    image BLOB
+);
+
+SELECT * FROM doctor;

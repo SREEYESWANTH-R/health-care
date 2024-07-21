@@ -95,6 +95,4 @@ const doctor =[
   }
 ]
 
-
-
-  export default doctor
+export default doctor

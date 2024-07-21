@@ -1,11 +1,26 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require('cors');
+const multer = require('multer');
+const path = require('path')
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 const Port = 3000;
+
+const storage = multer.diskStorage({
+  destination:(req,file,cb)=>{
+    cb(null, "images" )
+  },
+  filename:(req,file,cb)=>{
+    cb(null,file.fieldname + "_" + Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({
+  storage:storage
+})
 
 const db = mysql.createConnection(
     {
@@ -162,7 +177,21 @@ app.post('/adminlogin',(req,res)=>{
   );
 });
 
+app.post('/addDoctor', upload.single('image'), (req, res) => {
+  const { name, gender, location, description, expertise } = req.body;
+  const image = req.file.filename;
 
+  const query = "INSERT INTO doctor (name, gender, location, description, expertise, image) VALUES (?, ?, ?, ?, ?, ?)";
+  db.query(query, [name, gender, location, description, expertise, image], (err, result) => {
+      if (err) {
+          console.error("Error inserting doctor data", err);
+          res.status(500).json({ error: "Error inserting data" });
+      } else {
+          console.log("Doctor inserted successfully");
+          res.status(200).json({ message: 'Doctor inserted successfully' });
+      }
+  });
+});
 
 
 
